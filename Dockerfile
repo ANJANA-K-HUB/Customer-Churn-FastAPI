@@ -15,7 +15,7 @@ COPY main.py .
 COPY churn_model.pkl .
 
 # 6. Expose port 8000 for network access
-EXPOSE 8000
+EXPOSE 10000
 
 # 7. Command to launch Uvicorn web server when container starts
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-10000}"]
